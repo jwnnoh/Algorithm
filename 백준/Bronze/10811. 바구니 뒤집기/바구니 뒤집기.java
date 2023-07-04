@@ -9,9 +9,9 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int n = Integer.parseInt(st.nextToken());
-        int[] arr = new int[n+1];
-        for (int i = 1; i < n+1; i++) {
-            arr[i] = (i);
+        int[] arr = new int[n + 1];
+        for (int i = 1; i < n + 1; i++) {
+            arr[i] = i;
         }
 
         int m = Integer.parseInt(st.nextToken());
@@ -19,13 +19,11 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
-            for (int j = x; j <= (x + y) / 2; j++) {
-                int tmp = arr[j];
-                arr[j] = arr[x + y - j];
-                arr[x + y - j] = tmp;
-
+            for (int j = x, k = y; j < k; j++, k--) {
+                int temp = arr[j];
+                arr[j] = arr[k];
+                arr[k] = temp;
             }
-
         }
 
         for (int i = 1; i < arr.length; i++) {
