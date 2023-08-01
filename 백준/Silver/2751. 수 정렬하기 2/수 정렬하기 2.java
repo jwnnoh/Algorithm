@@ -6,20 +6,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = Integer.parseInt(st.nextToken());
-        int[] arr = new int[n];
-        
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[2000001];
+
         for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
-            arr[i] = Integer.parseInt(st.nextToken());
+            arr[Integer.parseInt(br.readLine())+1000000]++;
         }
-        Arrays.sort(arr);
 
-        for (int i :
-                arr) {
-            sb.append(i).append("\n");
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                sb.append(i - 1000000).append("\n");
+            }
         }
         System.out.println(sb);
     }
