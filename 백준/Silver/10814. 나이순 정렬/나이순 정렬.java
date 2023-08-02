@@ -19,12 +19,8 @@ public class Main {
             arr[i][1] = st.nextToken();
         }
 
-        Arrays.sort(arr, new Comparator<String[]>() {
-            @Override
-            public int compare(String[] o1, String[] o2) {
+        Arrays.sort(arr,(o1, o2) -> {
                 return Integer.parseInt(o1[0]) - Integer.parseInt(o2[0]);
-            }
-
         });
 
         for (int i = 0; i < n; i++) {
