@@ -1,27 +1,32 @@
-import java.io.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 
 public class Main {
+
+    static boolean b = false;
+    static StringBuilder sb = new StringBuilder();
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String s = br.readLine();
+        solve(br.readLine());
 
-        int count = 0;
-        for (int i = 0; i < s.length()/2; i++) {
-            if (s.charAt(i) != s.charAt(s.length()-i-1)) {
-                count++;
+    }
+
+    public static void solve(String s) {
+        for (int i = 0; i <= s.length()/2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+                b = true;
+                break;
             }
         }
-
-        if (count == 0) {
-            bw.write("1" + "\n");
-        } else bw.write("0" + "\n");
-
-        bw.flush();
-        br.close();
-        bw.close();
+        if (b) {
+            System.out.println(0);
+        } else {
+            System.out.println(1);
+        }
     }
+
 }
