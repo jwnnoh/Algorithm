@@ -6,7 +6,7 @@ import java.util.*;
 public class Main {
     static StringBuilder sb = new StringBuilder();
     static int a, b, c, sum;
-    static boolean[][] arr = new boolean[3][101];
+    static int[] arr = new int[101];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,24 +22,28 @@ public class Main {
             int start = Integer.parseInt(st.nextToken());
             int end = Integer.parseInt(st.nextToken());
             for (int j = start; j < end; j++) {
-                arr[i][j] = true;
+                arr[j]++;
             }
         }
         solve(a, b, c);
-        System.out.println(sum);
 
     }
 
     public static void solve(int a, int b, int c) {
         for (int i = 1; i < 101; i++) {
-            if (arr[0][i] && arr[1][i] && arr[2][i]) {
-                sum += 3 * c;
-            } else if ((arr[0][i] && arr[1][i]) || (arr[1][i] && arr[2][i]) || (arr[0][i] && arr[2][i])) {
-                sum += 2 * b;
-            } else if (arr[0][i] || arr[1][i] || arr[2][i]) {
-                sum += a;
+            switch (arr[i]) {
+                case 1:
+                    sum += a;
+                    break;
+                case 2:
+                    sum += 2 * b;
+                    break;
+                case 3:
+                    sum += 3 * c;
+                    break;
             }
         }
+        System.out.println(sum);
     }
 
 }
