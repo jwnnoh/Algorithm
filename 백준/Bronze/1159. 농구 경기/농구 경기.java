@@ -5,28 +5,18 @@ import java.util.*;
 
 public class Main {
 
-    static StringBuilder sb = new StringBuilder();
-
-    static String[] name;
-    static int[] cnt = new int[26];
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        StringBuilder sb = new StringBuilder();
+
         int n = Integer.parseInt(br.readLine());
-        name = new String[n];
+        int[] cnt = new int[26];
+
         for (int i = 0; i < n; i++) {
-            name[i] = br.readLine();
+            cnt[br.readLine().charAt(0)-97]++;
         }
-        solve();
 
-    }
-
-    public static void solve() {
-        for (String s :
-                name) {
-            cnt[s.charAt(0)-97]++;
-        }
         for (int i = 0; i < cnt.length; i++) {
             if (cnt[i] >= 5) {
                 sb.append((char) (i + 97));
@@ -34,9 +24,11 @@ public class Main {
         }
         if (sb.length() == 0) {
             System.out.println("PREDAJA");
-        } else {
-            System.out.println(sb);
         }
+        System.out.println(sb);
+
+
     }
+
 
 }
