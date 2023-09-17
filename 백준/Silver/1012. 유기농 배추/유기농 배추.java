@@ -6,10 +6,11 @@ import java.util.*;
 
 public class Main {
 
-    static Queue<Point> queue = new LinkedList<>();
-
     static int[] dy = {-1, 0, 1, 0};
     static int[] dx = {0, 1, 0, -1};
+    static boolean[][] arr, check;
+    static int ny, nx, y, x, cnt, m, n;
+
 
     static StringBuilder sb = new StringBuilder();
 
@@ -21,12 +22,12 @@ public class Main {
         for (int i = 0; i < t; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
 
-            int m = Integer.parseInt(st.nextToken());
-            int n = Integer.parseInt(st.nextToken());
+            m = Integer.parseInt(st.nextToken());
+            n = Integer.parseInt(st.nextToken());
             int k = Integer.parseInt(st.nextToken());
 
-            boolean[][] arr = new boolean[m][n];
-            boolean[][] check = new boolean[m][n];
+            arr = new boolean[m][n];
+            check = new boolean[m][n];
 
 
             for (int j = 0; j < k; j++) {
@@ -37,48 +38,37 @@ public class Main {
                 arr[tmpY][tmpX] = true;
             }
 
-            int cnt = 0;
-            int ny = 0, nx = 0, y = 0, x = 0;
+            cnt = 0;
 
             for (int j = 0; j < m; j++) {
                 for (int l = 0; l < n; l++) {
                     if (arr[j][l]) {
                         if (!check[j][l]){
                             cnt++;
-
-                            check[j][l] = true;
-
-                            queue.offer(new Point(j, l));
-                        }
-
-                    }
-
-                    while (!queue.isEmpty()) {
-                        Point p = queue.poll();
-                        y = p.x;
-                        x = p.y;
-
-                        for (int o = 0; o < 4; o++) {
-                            ny = y + dy[o];
-                            nx = x + dx[o];
-
-                            if (ny < 0 || ny >= m || nx < 0 || nx >= n || !arr[ny][nx]) {
-                                continue;
-                            }
-                            if (check[ny][nx]) {
-                                continue;
-                            }
-
-                            check[ny][nx] = true;
-                            queue.offer(new Point(ny, nx));
+                            dfs(j, l);
                         }
                     }
                 }
             }
-
             sb.append(cnt).append("\n");
         }
         System.out.println(sb);
+    }
+
+    private static void dfs(int j, int l) {
+        check[j][l] = true;
+        for (int i = 0; i < 4; i++) {
+            ny = j + dy[i];
+            nx = l + dx[i];
+
+            if (ny < 0 || ny >= m || nx < 0 || nx >= n) {
+                continue;
+            }
+            if (!check[ny][nx] && arr[ny][nx]) {
+                dfs(ny, nx);
+            }
+        }
+
     }
 
 }
