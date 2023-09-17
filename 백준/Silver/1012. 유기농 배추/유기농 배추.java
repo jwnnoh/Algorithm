@@ -45,10 +45,12 @@ public class Main {
                     if (arr[j][l]) {
                         if (!check[j][l]){
                             cnt++;
-                        }
-                        check[j][l] = true;
 
-                        queue.offer(new Point(j, l));
+                            check[j][l] = true;
+
+                            queue.offer(new Point(j, l));
+                        }
+
                     }
 
                     while (!queue.isEmpty()) {
