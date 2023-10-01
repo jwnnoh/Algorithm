@@ -13,8 +13,6 @@ class Solution {
             for (int j = 0; j < photo[i].length; j++) {
                 if (map.containsKey(photo[i][j])) {
                     answer[i] += map.get(photo[i][j]);
-                } else {
-                    answer[i] += 0;
                 }
             }
         }
