@@ -3,23 +3,24 @@ import java.util.*;
 class Solution {
     public int[] solution(int N, int[] stages) {
         int[] answer = new int[N];
-        double[] pass = new double[N];
-        double[] remain = new double[N];
+
         HashMap<Integer, Double> hashmap = new HashMap<>(N);
 
         for (int i = 0; i < N; i++) {
+            double pass = 0;
+            double remain = 0;
             for (int j = 0; j < stages.length; j++) {
                 if (stages[j] >= i+1) {
-                    pass[i]++;
+                    pass++;
                     if (stages[j] == i+1) {
-                        remain[i]++;
+                        remain++;
                     }
                 }
             }
-            if (pass[i] == 0) {
-                pass[i] = 1;
+            if (pass == 0) {
+                pass = 1;
             }
-            hashmap.put(i+1, (remain[i]/pass[i]));
+            hashmap.put(i+1, (remain/pass));
         }
 
         for (int i = 0; i < N; i++) {
