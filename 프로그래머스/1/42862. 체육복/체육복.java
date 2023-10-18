@@ -24,7 +24,6 @@ class Solution {
                 if (pe[i+1] == 2) {
                     pe[i+1]--;
                     pe[i]++;
-                    continue;
                 }
             }
             
