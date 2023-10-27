@@ -6,13 +6,12 @@ class Solution {
         char first = s.charAt(0);
         boolean flag = false;
         
-        for (int i = 0; i < s.length(); i++) {
-            if(flag) {
-                first = s.charAt(i);
+        for (char c : s.toCharArray()) {
+            if (flag) {
+                first = c;
                 flag = false;
             }
-            
-            if (s.charAt(i) == first) {
+            if (c == first) {
                 isfirst++;
             }
             else {
