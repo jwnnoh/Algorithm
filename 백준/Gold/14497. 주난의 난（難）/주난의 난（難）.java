@@ -58,16 +58,12 @@ public class Main {
                     if (ny < 0 || nx < 0 || ny >= n || nx >= k || visited[ny][nx]) {
                         continue;
                     }
-                    if (arr[ny][nx] != 0) {
+                    if (arr[ny][nx] != 0) { // 1을 만났을 때
                         arr[ny][nx] = 0;
                         visited[ny][nx] = true;
-                    } else {
+                    } else { // 0일 경우
                         queue.add(new Point(ny, nx));
                         visited[ny][nx] = true;
-                    }
-                    if (arr[end.x][end.y] == 0) {
-                        System.out.println(count);
-                        return;
                     }
                 }
             }
@@ -75,6 +71,6 @@ public class Main {
             visited = new boolean[n][k];
             visited[start.x][start.y] = true;
         }
+        System.out.println(count - 1);
     }
-
 }
