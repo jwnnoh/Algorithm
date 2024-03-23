@@ -33,11 +33,9 @@ public class Main {
     }
 
     private static void go(int count, int price) {
-        if (price >= answer) {
-            return;
-        }
         if (count == 3) {
             answer = Math.min(price, answer);
+            return;
         }
         for (int i = 1; i < n - 1; i++) {
             for (int j = 1; j < n - 1; j++) {
